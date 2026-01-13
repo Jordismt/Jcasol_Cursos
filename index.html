@@ -3,62 +3,135 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JcasolDev - Cursos</title>
+  <title>JcasolDev – Cursos de Desarrollo Web</title>
+
+  <!-- SEO básico -->
+  <meta name="description" content="Cursos profesionales de desarrollo web: JavaScript, React, Node.js y Full Stack. Aprende con proyectos reales.">
+  <meta name="author" content="Jordi Casanova">
+
+  <!-- Font Awesome (para iconos de redes sociales) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-o..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
   <header>
-    <img src="logo.png" alt="Logo">
+
+    <!-- Branding -->
+    <img src="logo.png" alt="Logo JcasolDev">
     <h1>JcasolDev</h1>
     <p>Desarrollador Full Stack</p>
+
+
+    <!-- Social links en el header -->
+    <nav class="social-links" aria-label="Redes sociales">
+      <!-- X (Twitter) -->
+      <a href="https://x.com/Jcasoldev" target="_blank" rel="noopener noreferrer" aria-label="X">
+        <i class="fab fa-twitter fa-2x"></i>
+      </a>
+
+      <!-- TikTok -->
+      <a href="https://www.tiktok.com/@jcasoldev" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <i class="fab fa-tiktok fa-2x"></i>
+      </a>
+
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@Jcasol_DEV" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <i class="fab fa-youtube fa-2x"></i>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/jcasoldev/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <i class="fab fa-instagram fa-2x"></i>
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/jcasoldev/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <i class="fab fa-linkedin fa-2x"></i>
+      </a>
+
+      <!-- Github -->
+      <a href="https://github.com/jordismt" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <i class="fab fa-github fa-2x"></i>
+      </a>
+    </nav>
+
+
+
   </header>
 
-  <div class="container">
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
+  <main class="container">
     <h2>Mis Cursos</h2>
-    <p>Accede a todos mis cursos directamente en Gumroad. Haz clic en el que te interese y comienza a aprender hoy mismo.</p>
+    <p>
+      Accede a todos mis cursos directamente en Gumroad.
+      Formación práctica, clara y orientada a proyectos reales.
+    </p>
 
-<div class="courses">
-  <div class="course-card">
-    <img src="curso1.jpg" alt="Curso 1">
-    <div class="course-content">
-      <h3>Curso 1 - Introducción a JavaScript</h3>
-      <p>Aprende los fundamentos de JavaScript y empieza a programar tus primeras aplicaciones web.</p>
-      <a href="https://gumroad.com/curso1" target="_blank" class="btn">Ir al curso</a>
+
+    <!-- Filtros -->
+    <div class="course-filters">
+      <input type="text" id="search-input" placeholder="Buscar curso por nombre..." />
+
+      <select id="level-filter">
+        <option value="">Todos los niveles</option>
+        <option value="Nivel básico">Nivel básico</option>
+        <option value="Frontend">Frontend</option>
+        <option value="Backend">Backend</option>
+        <option value="Completo">Completo</option>
+      </select>
+
+      <select id="price-filter">
+        <option value="">Todos los precios</option>
+        <option value="0-0">Gratis</option>
+        <option value="1-50">1€ - 50€</option>
+        <option value="51-100">51€ - 100€</option>
+        <option value="101-9999">101€ o más</option>
+      </select>
     </div>
-  </div>
-
-  <div class="course-card">
-    <img src="curso2.jpg" alt="Curso 2">
-    <div class="course-content">
-      <h3>Curso 2 - React para principiantes</h3>
-      <p>Domina React y construye aplicaciones interactivas modernas de manera sencilla.</p>
-      <a href="https://gumroad.com/curso2" target="_blank" class="btn">Ir al curso</a>
-    </div>
-  </div>
-
-  <div class="course-card">
-    <img src="curso3.jpg" alt="Curso 3">
-    <div class="course-content">
-      <h3>Curso 3 - Node.js y APIs</h3>
-      <p>Aprende a crear servidores, APIs y aplicaciones backend con Node.js de forma práctica.</p>
-      <a href="https://gumroad.com/curso3" target="_blank" class="btn">Ir al curso</a>
-    </div>
-  </div>
-
-  <div class="course-card">
-    <img src="curso4.jpg" alt="Curso 4">
-    <div class="course-content">
-      <h3>Curso 4 - Desarrollo Full Stack</h3>
-      <p>Consolida tus conocimientos y crea aplicaciones completas de frontend y backend.</p>
-      <a href="https://gumroad.com/curso4" target="_blank" class="btn">Ir al curso</a>
-    </div>
-  </div>
-</div>
 
 
+
+    <!-- JS inyecta aquí -->
+    <section class="courses" id="courses" aria-live="polite"></section>
+  </main>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
   <footer>
-    &copy; 2026 Jordi Casanova. Todos los derechos reservados.
+    <div class="footer-socials">
+      <a href="https://github.com/jordismt" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      ·
+      <a href="https://linkedin.com/in/jcasoldev" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      ·
+      <a href="mailto:jcasoldev@gmail.com">
+        <i class="fas fa-envelope"></i> Contacto
+      </a>
+    </div>
+
+    <p>&copy; 2026 JcasolDev. Todos los derechos reservados.</p>
   </footer>
+
+  <!-- JS -->
+  <script type="module" src="js/main.js"></script>
+
+
+
 </body>
 </html>

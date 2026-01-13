@@ -1,182 +1,347 @@
-/* Fuentes y reset */
-* {
-  box-sizing: border-box;
-  transition: all 0.3s ease;
+/* =========================
+   RESET + VARIABLES
+========================= */
+:root {
+  --primary: #0e4eb8;
+  --primary-light: #1266d4;
+  --bg: #f4f7fb;
+  --glass: rgba(255, 255, 255, 0.75);
+  --shadow-soft: 0 20px 40px rgba(0,0,0,0.08);
+  --shadow-strong: 0 35px 80px rgba(0,0,0,0.18);
 }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #f0f4f9, #e2e8f0);
+  background: radial-gradient(circle at top, #ffffff 0%, #eef2f8 40%, #e7edf5 100%);
   color: #0a2540;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 header {
-  background: linear-gradient(90deg, #0e4eb8, #1266d4);
-  color: white;
-  padding: 30px 20px;
-  text-align: center;
   position: relative;
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #0e4eb8, #1266d4);
+  color: white;
   overflow: hidden;
 }
 
-header::after {
-  content: '';
+header::before {
+  content: "";
   position: absolute;
-  bottom: 0;
-  left: -50%;
-  width: 200%;
-  height: 100%;
-  background: rgba(255,255,255,0.1);
-  transform: skewX(-20deg);
-  transition: all 0.7s ease;
-}
-
-header:hover::after {
-  left: 0;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.25), transparent 40%);
+  z-index: 0;
 }
 
 header img {
-  width: 70px;
-  margin-bottom: 10px;
-  animation: logo-bounce 1.5s infinite;
+  width: 200px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 10px 25px rgba(0,0,0,0.3));
+  animation: float 4s ease-in-out infinite;
+  z-index: 1;
 }
 
-@keyframes logo-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: 1px;
+header h1 { margin: 0; font-size: 3.4rem; letter-spacing: 1px; }
+header p { margin-top: 8px; font-size: 1.8rem; opacity: 0.9; }
+
+/* =========================
+   SOCIAL LINKS
+========================= */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+  z-index: 1;
+  line-height: 0; /* <--- Esto elimina la línea extra */
 }
 
-header p {
-  margin: 5px 0 0;
-  font-size: 1.1rem;
-  opacity: 0.85;
+
+.social-links a {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  color: white;
+  font-size: 1.4rem;
+  transition: all 0.4s ease;
+  line-height: 1;
+  text-decoration: none;
 }
 
-/* CONTAINER */
+.social-links a:hover {
+  transform: translateY(-5px) scale(1.2) rotate(-5deg);
+  background: rgba(255,255,255,0.3);
+  color: #063358;
+}
+
+/* =========================
+   CONTAINER
+========================= */
 .container {
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 0 20px;
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 25px;
   text-align: center;
 }
 
 h2 {
-  color: #0e4eb8;
-  font-size: 2rem;
+  font-size: 2.4rem;
   margin-bottom: 20px;
-  position: relative;
+  color: var(--primary);
 }
 
 h2::after {
-  content: '';
+  content: "";
   display: block;
-  width: 60px;
-  height: 3px;
-  background: #0e4eb8;
-  margin: 10px auto 0;
-  border-radius: 3px;
-  transition: width 0.4s ease;
+  width: 80px;
+  height: 4px;
+  margin: 15px auto 0;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  border-radius: 5px;
 }
 
-h2:hover::after {
-  width: 100px;
+.container > p {
+  max-width: 650px;
+  margin: 0 auto 70px;
+  font-size: 1.1rem;
+  color: #334155;
 }
 
-p {
-  line-height: 1.8;
-  margin-bottom: 40px;
-  color: #1c1c1c;
-  font-size: 1.05rem;
-}
-
-/* CURSOS COMO TARJETAS */
+/* =========================
+   COURSES GRID
+========================= */
 .courses {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
+  gap: 50px;
 }
 
-@media(min-width: 768px) {
+@media (min-width: 900px) {
   .courses {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* =========================
+   COURSE CARD
+========================= */
 .course-card {
-  background: white;
-  border-radius: 15px;
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow-soft);
+  transform-style: preserve-3d;
+  opacity: 0;
+  transform: translateY(50px) rotateX(15deg) scale(0.95);
+  transition: all 0.8s cubic-bezier(0.6, 0.05, 0.01, 0.9);
+}
+
+.course-card.visible {
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg) scale(1);
+}
+
+.course-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.4), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
 }
 
 .course-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  transform: translateY(-14px) scale(1.02);
+  box-shadow: var(--shadow-strong);
 }
 
-.course-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+.course-card:hover::after { opacity: 1; }
+
+/* =========================
+   COURSE FOOTER: badge izquierda, botón derecha
+========================= */
+.course-footer {
+  display: flex;
+  justify-content: space-between; /* badge izquierda, botón derecha */
+  align-items: center;
+  margin-top: 20px;
 }
 
-.course-content {
-  padding: 20px;
-  text-align: left;
-}
-
-.course-content h3 {
-  margin: 0 0 10px;
-  color: #0e4eb8;
-  font-size: 1.3rem;
-}
-
-.course-content p {
-  margin: 0 0 15px;
-  line-height: 1.5;
-  color: #333;
-}
-
-/* BOTÓN DENTRO DE TARJETA */
-.course-content .btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: linear-gradient(135deg, #0e4eb8, #1266d4);
-  color: white;
-  font-weight: 600;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.course-content .btn:hover {
-  background: linear-gradient(135deg, #1266d4, #0e4eb8);
-  transform: translateY(-3px);
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  margin: 60px 0 20px;
+/* Opcional: un pequeño estilo para el nivel si lo quieres junto al badge */
+.course-footer .level {
   font-size: 0.9rem;
-  color: #555;
+  font-weight: 600;
+  color: #334155;
 }
 
-/* MICRO INTERACCIONES */
-.course-content .btn span {
-  display: inline-block;
-  transition: transform 0.3s ease;
+
+/* =========================
+   IMAGE
+========================= */
+.course-image {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
 }
 
-.course-content .btn:hover span {
-  transform: translateX(5px);
+.course-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.course-card:hover img {
+  transform: scale(1.18);
+}
+
+.course-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.05));
+}
+
+/* =========================
+   BADGE
+========================= */
+.badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  padding: 8px 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  background: #ffb703;
+  color: #000;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.badge.blue { background: #3b82f6; color: white; }
+.badge.gold { background: linear-gradient(135deg, #ffd700, #ffb703); }
+
+/* =========================
+   CONTENT
+========================= */
+.course-content { padding: 30px; text-align: left; }
+.course-content h3 { font-size: 1.45rem; margin-bottom: 12px; color: var(--primary); }
+.course-content p { font-size: 1rem; line-height: 1.7; color: #334155; margin-bottom: 28px; }
+
+/* =========================
+   BUTTON
+========================= */
+.btn {
+  padding: 14px 26px;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  box-shadow: 0 12px 30px rgba(14,78,184,0.45);
+  transition: all 0.5s ease;
+}
+
+.btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 18px 45px rgba(14,78,184,0.65);
+}
+
+
+/* =========================
+   FILTROS CURSOS
+========================= */
+.course-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.course-filters input,
+.course-filters select {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+
+
+
+
+
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  margin: 100px 0 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.footer-socials a {
+  text-decoration: none;
+  color: #64748b;
+  margin: 0 6px;
+  transition: color 0.3s ease;
+}
+.footer-socials a:hover { color: var(--primary); }
+
+/* =========================
+   HEADER ANIMATIONS
+========================= */
+.animate-header {
+  opacity: 0;
+  transform: translateY(30px) rotateX(10deg);
+  animation: fadeUp 0.8s forwards;
+}
+
+.animate-header:nth-child(1) { animation-delay: 0.2s; }
+.animate-header:nth-child(2) { animation-delay: 0.4s; }
+.animate-header:nth-child(3) { animation-delay: 0.6s; }
+
+.animate-social {
+  opacity: 0;
+  transform: scale(0) rotate(-15deg);
+  animation: popIn 0.8s forwards;
+}
+.animate-social:nth-child(1) { animation-delay: 0.8s; }
+.animate-social:nth-child(2) { animation-delay: 1s; }
+.animate-social:nth-child(3) { animation-delay: 1.2s; }
+.animate-social:nth-child(4) { animation-delay: 1.4s; }
+.animate-social:nth-child(5) { animation-delay: 1.6s; }
+.animate-social:nth-child(6) { animation-delay: 1.8s; }
+
+/* Keyframes */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(30px) rotateX(10deg); }
+  100% { opacity: 1; transform: translateY(0) rotateX(0deg); }
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0) rotate(-15deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }

@@ -1,0 +1,41 @@
+[
+  {
+    "title": "Introducción a JavaScript",
+    "description": "Domina los fundamentos de JavaScript desde cero y crea tus primeras apps web reales.",
+    "image": "logo.png",
+    "url": "https://gumroad.com/curso1",
+    "level": "Nivel básico",
+    "badge": "Bestseller",
+    "badgeColor": "default",
+    "price": 29
+  },
+  {
+    "title": "React para Principiantes",
+    "description": "Aprende React paso a paso y construye interfaces modernas y profesionales.",
+    "image": "logo.png",
+    "url": "https://gumroad.com/curso2",
+    "level": "Frontend",
+    "badge": "Popular",
+    "badgeColor": "blue",
+    "price": 29
+  },
+  {
+    "title": "Node.js & APIs",
+    "description": "Crea APIs REST profesionales, conecta bases de datos y domina el backend moderno.",
+    "image": "logo.png",
+    "url": "https://gumroad.com/curso3",
+    "level": "Backend",
+    "price": 29
+  },
+  {
+    "title": "Desarrollo Full Stack",
+    "description": "El camino completo: frontend, backend, despliegue y mentalidad profesional.",
+    "image": "logo.png",
+    "url": "https://gumroad.com/curso4",
+    "level": "Completo",
+    "badge": "Premium",
+    "badgeColor": "gold",
+    "highlight": true,
+    "price": 29
+  }
+]
